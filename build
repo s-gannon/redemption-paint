@@ -2,5 +2,5 @@
 
 cd src/
 
-clang main.c -Wall -Wextra -pedantic -std=c17 -o paint `pkg-config --cflags --libs gtk+-3.0` 
+clang main.c -Wall -Wextra -pedantic -std=gnu17 -o paint `pkg-config --cflags --libs gtk+-3.0` 
 mv paint ../bin/
