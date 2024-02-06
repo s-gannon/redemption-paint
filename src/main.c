@@ -4,18 +4,13 @@
 #include <limits.h>
 #include <gtk/gtk.h>
 
+#include "app_layout.h"
+
 typedef struct image_t{
 	GtkWidget* gtk_image;
 	GtkWidget** parents;
 	char file_path[PATH_MAX];
 } image_t;
-/*
- * the path you put here seems to be relative based on where you run the 
- * build script, so this is relative to the base directory of the project 
- * and not where main.c is OR what directory it gets compiled in (since the 
- * build script goes into /src to compile)
- */
-const char* GLADE_LAYOUT_RELATIVE_PATH = "res/layout.glade";
 
 void quit_program(GtkWidget* widget, gpointer ptr){
 	gtk_main_quit();
@@ -53,9 +48,6 @@ void file_open(GtkWidget* widget, gpointer ptr){
 int main(int argc, char** argv){
 	image_t* image = malloc(sizeof(image_t));
 	
-	// fuck you realpath
-	char* glade_layout_path = realpath(GLADE_LAYOUT_RELATIVE_PATH, NULL);
-
 	gtk_init(&argc, &argv);
 
 	// GTK Widgets
